@@ -35,6 +35,7 @@ p {
 }
 
 #play {
+    background-color: transparent;
     height: 100px;
     width: 100%;
     
