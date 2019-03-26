@@ -19,9 +19,9 @@ var tile_dom = [
 
 var user_input = ''; //what the user clicks on
 var current_index = 0; //where the user is at; increment for every round
-var score = 1; //increments after every successfull round
+var score = 0; //increments after every successfull round
 var color_sequence = []; //where the color sequences will be pushed
-var high_score = []; //where the high score will be pushed in to
+var score_array = []; //where the high score will be pushed in to
 var user_is_clicking = false; // This determines whether the user can click tiles or not.
 var start_button = document.getElementById('start-button');
 
@@ -51,20 +51,23 @@ function handleClick(event){
     if (user_input === tile_dom[index_of_tile_to_be_lit].id) {
       console.log('correct');
       current_index++;
-        score ++;
-        console.log(`Score: ${score}`)
 
       if (current_index >= color_sequence.length) {
         console.log('You got it all right! Good job');
         user_is_clicking = false;
         current_index = 0;
+        score++;
+        console.log(`Score: ${score}`)
         add_random_color_to_sequence();
         setTimeout(show_next_color_in_sequence, 1500);
       }
     }
 
-    //if not end game
+    //if not end game; store score to local storage
     else {
+      score_array.push(score);
+      var string_score = JSON.stringify(score_array);
+      localStorage.setItem('score_array', string_score);
       console.log('Better Luck Next Time!');
       end_game();
     }
@@ -143,15 +146,16 @@ function end_game() {
   start_button.disabled = false;
   color_sequence = [];
   current_index = 0;
+  score = 0;
   console.log('end_game');
 }
 
 //Score to local storage
 
-function scores_to_local_storage() {
-  handleClick();
-  score++;
-  console.log(score)
-}
+// score_per_round.addEventListener('click', function(){
+//   score++;
+//   localStorage.setItem('clicksInLocalStorage', clickCount);
+//   clicky.textContent = `clicked ${clickCount} times`;
+// });
 
 attach_event_listeners();
