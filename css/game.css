@@ -3,10 +3,14 @@ h1 {
   font-family: 'Permanent Marker', cursive;
   font-size: 95px;
 }
+p {
+  text-align: center;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 20px;
+}
 .background {
   content: "";
   display: block;
-  display: none;
   position: absolute;
   z-index: -1;
   width: 100%;
@@ -22,10 +26,9 @@ h1 {
 li {
   display: inline-block;
   font-family: 'Permanent Marker', cursive;
-  font-size: 25px;
+  font-size: 20px;
 }
 footer {
-  display: none;
   text-align:center;
   position: fixed;
   left: 0;
@@ -35,8 +38,8 @@ footer {
   color: white;
 }
 #home, #leaderboard, #about {
-padding-left: 260px;
-padding-right: 260px;
+  margin-left: 200px;
+  margin-right: 200px;
 }
 
 * {

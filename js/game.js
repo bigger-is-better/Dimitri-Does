@@ -40,6 +40,9 @@ function attach_event_listeners() {
 
 //Handles user's clicks========================================================================
 function handleClick(event){
+
+  var parent = document.getElementById("score");
+
   if (user_is_clicking) {
     
     //get ID of what was clicked
@@ -60,6 +63,7 @@ function handleClick(event){
         console.log(`Score: ${score}`)
         add_random_color_to_sequence();
         setTimeout(show_next_color_in_sequence, 1500);
+        parent.textContent = `SCORE: ${score}`;
       }
     }
 
@@ -69,7 +73,10 @@ function handleClick(event){
       var string_score = JSON.stringify(score_array);
       localStorage.setItem('score_array', string_score);
       console.log('Better Luck Next Time!');
+      parent.textContent = `SCORE: ${score}`;
+      alert('Better Luck Next Time!');
       end_game();
+      parent.textContent = `Try Again? Click Start Game!`
     }
   }
 };
