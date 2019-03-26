@@ -4,21 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/game.css">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
-    <div id= "tile1">
-        <button type="button">Test</button>
+    <div id="main">
+        <div class="background"></div>
+        <h1>Dimitri Does</h1>
+        <div id="tile-blocks-container">
+            <div id="tile1" class='tile'></div>
+            <div id="tile2" class='tile'></div>
+            <div id="tile3" class='tile'></div>
+            <div id="tile4" class='tile'></div>
+        </div>
+        <div id="start-button_container">
+            <button id="start-button">Start Game</button>
+        </div>
+        <nav>
+            <footer>
+                <ul>
+                    <li><a id="home"href="../index.html">Home</a></li>
+                    <li><a id="leaderboard" href="scores.html">Leaderboard</a></li>
+                    <li><a id="about" href="about.html">About Us</a></li>
+                </ul>
+            </footer>
+        </nav>
+        <script src= "../js/game.js"></script>
     </div>
-    <div id= "tile2">
-        <button type="button">Test</button>
-    </div>
-    <div id= "tile3">
-            <button type="button">Test</button>
-    </div>
-    <div id= "tile4">
-            <button type="button">Test</button>
-    </div>
-    <script src= "../js/game.js"></script>
 </body>
 </html>
