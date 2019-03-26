@@ -21,7 +21,7 @@ var user_input = ''; //what the user clicks on
 var current_index = 0; //where the user is at; increment for every round
 var score = 0; //increments after every successfull round
 var color_sequence = []; //where the color sequences will be pushed
-var high_score = []; //where the high score will be pushed in to
+var score_array = []; //where the high score will be pushed in to
 var user_is_clicking = false; // This determines whether the user can click tiles or not.
 var start_button = document.getElementById('start-button');
 
@@ -29,6 +29,7 @@ var start_button = document.getElementById('start-button');
 //Functions
 //======================================================================================================================================
 
+//Event Listeners; loop through quadrant ID's==================================================
 function attach_event_listeners() {
   document.getElementById('start-button').addEventListener('click', start_game);
 
@@ -37,7 +38,7 @@ function attach_event_listeners() {
   }
 }
 
-//handles user's clicks
+//Handles user's clicks========================================================================
 function handleClick(event){
   if (user_is_clicking) {
     
@@ -55,20 +56,26 @@ function handleClick(event){
         console.log('You got it all right! Good job');
         user_is_clicking = false;
         current_index = 0;
+        score++;
+        console.log(`Score: ${score}`)
         add_random_color_to_sequence();
         setTimeout(show_next_color_in_sequence, 1500);
       }
     }
 
-    //if not end game
+    //if not end game; store score to local storage
     else {
+      score_array.push(score);
+      var string_score = JSON.stringify(score_array);
+      localStorage.setItem('score_array', string_score);
       console.log('Better Luck Next Time!');
       end_game();
     }
   }
 };
 
-//push color sequence into array
+//Push color sequence into array==================================================================
+
 function add_random_color_to_sequence() {
   var random_number = Math.floor(Math.random() * 4);
   if (random_number === 4) {
@@ -77,7 +84,8 @@ function add_random_color_to_sequence() {
   color_sequence.push(random_number)//push into color_sequence
 };
 
-// Light up a tile, then fade it back to it's original opacity; reference: stackoverflow
+// Light up a tile, then fade it back to it's original opacity; reference: stackoverflow===========
+
 function display_color(target) {
   target.style.opacity = '1';
   // Reduce opacity on each function call
@@ -92,8 +100,10 @@ function display_color(target) {
       current_index++;
       show_next_color_in_sequence();
     }
-  }, 100)
+  }, 100) //milisecond number to change speed of fade
 }
+
+//light up when clicked==============================================================================
 
 function display_color_when_click(target) {
   target.style.opacity = '1';
@@ -107,6 +117,8 @@ function display_color_when_click(target) {
     }
   }, 100)
 }
+
+//Start Game=======================================================================================
 
 function start_game() {
   start_button.disabled = true;
@@ -127,9 +139,23 @@ function show_next_color_in_sequence() {
   }
 }
 
+//End Game==========================================================================================
+
 function end_game() {
   user_is_clicking = false;
+  start_button.disabled = false;
+  color_sequence = [];
+  current_index = 0;
+  score = 0;
   console.log('end_game');
 }
+
+//Score to local storage
+
+// score_per_round.addEventListener('click', function(){
+//   score++;
+//   localStorage.setItem('clicksInLocalStorage', clickCount);
+//   clicky.textContent = `clicked ${clickCount} times`;
+// });
 
 attach_event_listeners();
