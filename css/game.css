@@ -3,6 +3,11 @@ h1 {
   font-family: 'Permanent Marker', cursive;
   font-size: 95px;
 }
+p {
+  text-align: center;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 20px;
+}
 .background {
   content: "";
   display: block;
