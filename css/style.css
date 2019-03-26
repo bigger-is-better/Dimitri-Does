@@ -1,8 +1,15 @@
+
+@keyframes title{
+    100% {left: 0;}
+}
+
+
 header {
     padding: 30px;
     margin-left: 90px;
     font-family: 'Permanent Marker', cursive;
     font-size: 95px;
+    animation-name: title;
 }
 
 h1 {
@@ -44,3 +51,12 @@ p {
 footer {
     padding: 200px;
 }
+
+input[type=submit] {
+    float: right;
+    height: 80px;
+    width: 455px;
+    opacity: .8;
+    color: black;
+}
+
