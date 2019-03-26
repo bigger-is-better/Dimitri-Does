@@ -57,6 +57,7 @@ function handleClick(event){
         user_is_clicking = false;
         current_index = 0;
         score++;
+        alert(`You got it all right! Good job! Score : ${score}`)
         console.log(`Score: ${score}`)
         add_random_color_to_sequence();
         setTimeout(show_next_color_in_sequence, 1500);
@@ -69,6 +70,7 @@ function handleClick(event){
       var string_score = JSON.stringify(score_array);
       localStorage.setItem('score_array', string_score);
       console.log('Better Luck Next Time!');
+      alert(`Better Luck Next Time! Score: ${score}`)
       end_game();
     }
   }
