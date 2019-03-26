@@ -36,7 +36,6 @@ function tableCreate() {
 
       }
 
-
       row.appendChild(cell);
       cell.style.width = '150px';
       cell.style.height='25px';
