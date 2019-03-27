@@ -1,5 +1,9 @@
 'use script';
+
+// var scores;
+// var player;
 var score_array = [];
+
 var players_and_score;
 
 function tableCreate() {
@@ -71,5 +75,9 @@ function create_row_and_td(first, second) {
 }
 
 get_players_and_score_from_ls();
-convert_scores_to_array_then_sort();
+
 tableCreate();
+
+convert_scores_to_array_then_sort();
+
+
