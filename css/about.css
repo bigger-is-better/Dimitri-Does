@@ -1,0 +1,73 @@
+
+@keyframes title{
+  100% {left: 0;}
+}
+
+
+header {
+  padding: 30px;
+  margin-left: 90px;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 95px;
+  animation-name: title;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Permanent Marker', cursive;
+  padding: 30px;
+}
+
+p {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+.background {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background-image: url('../img/test-bg1.jpg');
+  background-size: cover;
+  opacity: 0.8;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.toprow {
+  display: inline;
+}
+
+.middlerow {
+  display: block;
+}
+
+.bottomrow {
+  display: inline;
+}
+
+#play {
+  background-color: transparent;
+  height: 100px;
+  width: 100%;
+  
+}
+
+footer {
+  padding: 200px;
+}
+
+input[type=submit] {
+  float: right;
+  height: 80px;
+  width: 455px;
+  opacity: .8;
+  color: black;
+}
