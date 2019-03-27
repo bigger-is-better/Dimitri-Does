@@ -1,6 +1,6 @@
 'use script';
-var scores;
-var player;
+// var scores;
+// var player;
 var players_and_score;
 
 function tableCreate() {
