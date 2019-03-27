@@ -1,6 +1,5 @@
 'use script';
-var scores;
-var player;
+var score_array = [];
 var players_and_score;
 
 function tableCreate() {
@@ -15,10 +14,8 @@ function tableCreate() {
   tblBody.appendChild(row);
 
   // cells creation
-  for (var key in players_and_score) {
-    if (players_and_score.hasOwnProperty(key)) {
-      row = create_row_and_td(key, players_and_score[key]);
-    }
+  for (var i = 0; i < score_array.length; i++) {
+    row = create_row_and_td(score_array[i][0], score_array[i][1]);
     //row added to end of table body
     tblBody.appendChild(row);
   }
@@ -30,6 +27,18 @@ function tableCreate() {
   tbl.setAttribute('border', '2');
 }
 
+//Scores to array for sorting purposes
+
+function convert_scores_to_array_then_sort() {
+  for (var name in players_and_score) {
+    score_array.push([name, players_and_score[name]]);
+  }
+  
+  score_array.sort(function(a,b) {
+    return b[1] - a[1];
+  })
+  };
+  
 function get_players_and_score_from_ls() {
   players_and_score = JSON.parse(localStorage.getItem('players_and_score'));
   if (!players_and_score) {//if not true
@@ -62,4 +71,5 @@ function create_row_and_td(first, second) {
 }
 
 get_players_and_score_from_ls();
+convert_scores_to_array_then_sort();
 tableCreate();

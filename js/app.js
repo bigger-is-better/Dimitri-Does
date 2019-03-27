@@ -7,6 +7,7 @@ function save_username() {
     test_array.push(form_el.value);
     var stringy_array = JSON.stringify(test_array);
     localStorage.setItem('username', stringy_array);
+    alert (`Welcome! Click Play Game to Start.`);
 };
 
 function page_refresh() {
