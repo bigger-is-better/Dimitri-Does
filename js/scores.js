@@ -31,9 +31,12 @@ function tableCreate() {
 }
 
 function get_players_and_score_from_ls() {
-  players_and_score = JSON.parse(localStorage.getItem('players_and_score'));
-  if (!players_and_score) {//if not true
-    players_and_score = {}; //make an empty object
+  var stringy_ps = localStorage.getItem('players_and_score');
+  var unstringy_ps =JSON.parse(stringy_ps);
+  unstringy_ps.sort(function(a, b){return a-b});
+  // players_and_score = JSON.parse(localStorage.getItem('players_and_score'));
+  if (!unstringy_ps) {//if not true
+    unstringy_ps = {}; //make an empty object
   }
 }
 
