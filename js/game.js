@@ -185,7 +185,6 @@ function store_player_and_score_to_ls() {
     var stringy_array = JSON.stringify(players_and_score);
     localStorage.setItem('players_and_score', stringy_array);
   }
-   
 }
 
 
