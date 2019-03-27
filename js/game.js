@@ -38,10 +38,6 @@ function get_player_name() {
   if (!user_name) {//if not true
     user_name = 'John Doe'; //if user does not enter name
   }
-  if(user_name.length > 1){
-    user_name = user_name.slice(-1)[0];
-  }
-  console.log(user_name);
 }
 
 //getting players and score object from local storage
