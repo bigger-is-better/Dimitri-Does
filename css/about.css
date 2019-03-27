@@ -3,6 +3,9 @@
   100% {left: 0;}
 }
 
+body {
+  box-sizing: border-box;
+}
 
 header {
   padding: 30px;
@@ -41,16 +44,32 @@ p {
   right: 0;
 }
 
-.toprow {
-  display: inline;
+.toprowleft {
+  float: left;
 }
 
-.middlerow {
-  display: block;
+.toprowright {
+  float: right;
 }
 
-.bottomrow {
-  display: inline;
+.middlerowcenter {
+  display: center;
+}
+
+.bottomrowleft {
+  float: left;
+}
+
+.bottomrowright {
+  float: right;
+}
+
+.relativeparent {
+  position: relative;
+}
+
+.relativeparent ul {
+  position: absolute;
 }
 
 #play {
