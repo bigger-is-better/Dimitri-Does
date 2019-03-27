@@ -1,16 +1,50 @@
 
-@keyframes title{
-    100% {left: 0;}
+@keyframes slidein {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+}
+
+@keyframes slideDown {
+    0% {
+        transform: translateY(-1000%);
+        
+	}
+	50%{
+        transform: translateY(8%);
+        
+	}
+	65%{
+		transform: translateY(-4%);
+	}
+	80%{
+		transform: translateY(4%);
+	}
+	95%{
+		transform: translateY(-2%);
+	}			
+	100% {
+		transform: translateY(0%);
+	}		
 }
 
 
 header {
-    padding: 30px;
-    margin-left: 90px;
+    padding: 0px;
+    margin: auto;
+    text-align: center;
     font-family: 'Permanent Marker', cursive;
     font-size: 95px;
-    animation-name: title;
+    color: rgb(245, 233, 234);
+    font-weight: bolder;
+    transition: background-color 0.5s ease;
+    background-color: rgb(99, 184, 212);
+    animation: 3s infinite alternate slidein;
 }
+
+/* header:hover {
+    background-color: rgb(245, 233, 234);
+    color: rgb(99, 184, 212);
+} */
 
 h1 {
     text-align: center;
@@ -33,7 +67,7 @@ p {
     width: 100%;
     height: 100%;
     background-image: url('../img/test-bg1.jpg');
-    background-size: cover;
+    background-size: 100%;
     opacity: 0.8;
     top: 0;
     left: 0;
@@ -49,7 +83,16 @@ p {
 }
 
 footer {
-    padding: 200px;
+    position: fixed; 
+    text-align:center;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(99, 184, 212);
+    color:  rgb(245, 233, 234);
+    animation: 3s linear  slideDown;
+     
+    
 }
 
 input[type=submit] {
@@ -60,3 +103,13 @@ input[type=submit] {
     color: black;
 }
 
+#game, #leaderboard, #about {
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
+li {
+    display: inline-block;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 20px;
+}
