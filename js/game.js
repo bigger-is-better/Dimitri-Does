@@ -17,17 +17,37 @@ var tile_dom = [
   document.getElementById('tile4')
 ];
 
+var parent = document.getElementById("score");
 var user_input = ''; //what the user clicks on
 var current_index = 0; //where the user is at; increment for every round
 var score = 0; //increments after every successfull round
 var color_sequence = []; //where the color sequences will be pushed
-var score_array = []; //where the high score will be pushed in to
 var user_is_clicking = false; // This determines whether the user can click tiles or not.
 var start_button = document.getElementById('start-button');
+var players_and_score = {};
+var user_name = '';
 
 //======================================================================================================================================
 //Functions
 //======================================================================================================================================
+
+//get player name
+
+function get_player_name() {
+  user_name = JSON.parse(localStorage.getItem('username'));
+  if (!user_name) {//if not true
+    user_name = 'John Doe'; //if user does not enter name
+  }
+}
+
+//getting players and score object from local storage
+
+function get_players_and_score_from_ls() {
+  players_and_score = JSON.parse(localStorage.getItem('players_and_score'));
+  if (!players_and_score) {//if not true
+    players_and_score = {}; //make an empty object
+  }
+}
 
 //Event Listeners; loop through quadrant ID's==================================================
 function attach_event_listeners() {
@@ -40,8 +60,6 @@ function attach_event_listeners() {
 
 //Handles user's clicks========================================================================
 function handleClick(event){
-
-  var parent = document.getElementById("score");
 
   if (user_is_clicking) {
     
@@ -59,23 +77,20 @@ function handleClick(event){
         console.log('You got it all right! Good job');
         user_is_clicking = false;
         current_index = 0;
-        score++;
+        score += 100;
         console.log(`Score: ${score}`)
         add_random_color_to_sequence();
-        setTimeout(show_next_color_in_sequence, 1500);
+        setTimeout(show_next_color_in_sequence, 1000);
         parent.textContent = `SCORE: ${score}`;
       }
     }
 
-    //if not end game; store score to local storage
+    //if user picks incorrectly, end game; store score to local storage
     else {
-      score_array.push(score);
-      var string_score = JSON.stringify(score_array);
-      localStorage.setItem('score_array', string_score);
-      console.log('Better Luck Next Time!');
+      console.log('Better Luck Next Time!'); 
       parent.textContent = `SCORE: ${score}`;
-      alert('Better Luck Next Time!');
       end_game();
+      parent.style.color = "red"
       parent.textContent = `Try Again? Click Start Game!`
     }
   }
@@ -129,6 +144,8 @@ function display_color_when_click(target) {
 
 function start_game() {
   start_button.disabled = true;
+  parent.style.color = "green";
+  parent.textContent = `SCORE: ${score}`
   add_random_color_to_sequence();
   show_next_color_in_sequence();
 }
@@ -153,16 +170,25 @@ function end_game() {
   start_button.disabled = false;
   color_sequence = [];
   current_index = 0;
+  store_player_and_score_to_ls();
   score = 0;
   console.log('end_game');
 }
 
-//Score to local storage
+////replace high score if current score of same user is higher
 
-// score_per_round.addEventListener('click', function(){
-//   score++;
-//   localStorage.setItem('clicksInLocalStorage', clickCount);
-//   clicky.textContent = `clicked ${clickCount} times`;
-// });
+function store_player_and_score_to_ls() {
+  console.log('score', score); 
+  console.log('players_and_score', players_and_score[user_name]); 
+  if (!players_and_score[user_name] || players_and_score[user_name] < score) { 
+    players_and_score[user_name] = score
+    var stringy_array = JSON.stringify(players_and_score);
+    localStorage.setItem('players_and_score', stringy_array);
+  }
+   
+}
+
 
 attach_event_listeners();
+get_player_name();
+get_players_and_score_from_ls();
