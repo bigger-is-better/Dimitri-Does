@@ -63,9 +63,10 @@ footer {
   width: 505px;
   margin: 0 auto;
   margin-bottom: 100px;
+  background: white;
 }
 .tile:hover{
-  animation: pulse 5s infinite;
+  color: black;
 }
 .tile {
   float: left;
