@@ -20,12 +20,12 @@ var tile_dom = [
 var tile_border = document.getElementById('tiles_blocks_container')
 var start_button = document.getElementById('start-button');
 var parent = document.getElementById("score");
-var current_index = 0; //where the user is at; increment for every round
+var correct_clicks_from_user = 0; //where the user is at; increment for every round
 var score = 0; //increments after every successfull round
 var user_name = '';
 var color_sequence = []; //where the color sequences will be pushed
 var players_and_score = {};
-var user_is_clicking = false; // This determines whether the user can click tiles or not.
+var user_clicking = false; // This determines whether the user can click tiles or not.
 var tile1_sound = new sound('../sounds/simonSound1.mp3')
 var tile2_sound = new sound('../sounds/simonSound2.mp3')
 var tile3_sound = new sound('../sounds/simonSound3.mp3')
@@ -102,32 +102,27 @@ function play_color_sound(user_input) {
 //Handles user's clicks========================================================================
 
 function handleClick(event){
-  if (user_is_clicking) {
+  if (user_clicking) {
     //get ID of what was clicked
     var user_input = event.target.id;
     display_color_when_click(event.target);
 
-    //check if ID matches color_sequence element at current index
-    var index_of_tile_to_be_lit = color_sequence[current_index];
-    if (user_input === tile_dom[index_of_tile_to_be_lit].id) {
+    //check if user correctly clicked colors; 
+    var tile_to_be_lit = color_sequence[correct_clicks_from_user];
+    if (user_input === tile_dom[tile_to_be_lit].id) {
       play_color_sound(user_input);
       console.log('correct');
-      current_index++;
-
-      if (current_index >= color_sequence.length) {
+      correct_clicks_from_user++;
+      
+      //
+      if (correct_clicks_from_user >= color_sequence.length) {
         console.log('You got it all right! Good job');
-        user_is_clicking = false;
-        current_index = 0;
+        user_clicking = false;
+        correct_clicks_from_user = 0;
         score += 100;
-        add_random_color_to_sequence();
-        setTimeout(show_next_color_in_sequence, 1000);
+        random_color_to_sequence();
+        setTimeout(show_next_color_sequence, 1000);
         parent.textContent = `SCORE: ${score}`;
-          if(score >= 500) {
-            score += 150;
-              if(score >= 2000){
-                score += 250;
-          }
-        } 
       }
       console.log(`Score: ${score}`)
     }  
@@ -142,9 +137,9 @@ function handleClick(event){
   }
 }
 
-//Push color sequence into array==================================================================
+//Push color sequence into array==============================================================
 
-function add_random_color_to_sequence() {
+function random_color_to_sequence() {
   var random_number = Math.floor(Math.random() * 4);
   if (random_number === 4) {
     random_number--; //rare chance, that it might be a 1
@@ -165,8 +160,8 @@ function display_color(target) {
       clearInterval(fade_effect);
 
       // Next color in sequence
-      current_index++;
-      show_next_color_in_sequence();
+      correct_clicks_from_user++;
+      show_next_color_sequence();
     }
   }, 100) //milisecond number to change speed of fade
 }
@@ -192,31 +187,31 @@ function start_game() {
   start_button.disabled = true;
   parent.style.color = "green";
   parent.textContent = `SCORE: ${score}`
-  add_random_color_to_sequence();
-  show_next_color_in_sequence();
+  random_color_to_sequence();
+  show_next_color_sequence();
 }
 
-function show_next_color_in_sequence() {
-  if (current_index < color_sequence.length) {
-    var index_of_tile_to_be_lit = color_sequence[current_index];
-    display_color(tile_dom[index_of_tile_to_be_lit]);
-    play_color_sound(tile_dom[index_of_tile_to_be_lit].id);
+function show_next_color_sequence() {
+  if (correct_clicks_from_user < color_sequence.length) {
+    var tile_to_be_lit = color_sequence[correct_clicks_from_user];
+    display_color(tile_dom[tile_to_be_lit]);
+    play_color_sound(tile_dom[tile_to_be_lit].id);
   }
 
   else {
-    current_index = 0;
+    correct_clicks_from_user = 0;
     //entire sequence shown, allow users to click.
-    user_is_clicking = true;
+    user_clicking = true;
   }
 }
 
 //End Game==========================================================================================
 
 function end_game() {
-  user_is_clicking = false;
+  user_clicking = false;
   start_button.disabled = false;
   color_sequence = [];
-  current_index = 0;
+  correct_clicks_from_user = 0;
   store_player_and_score_to_ls();
   score = 0;
   fail_sound.play();
