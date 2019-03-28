@@ -1,9 +1,32 @@
 
 body{
 
-  background-color: rgb(187, 187, 211)
+  background-image: url('../img/test-bg1.jpg');
+  height: 100%;
 }
 table{
 
   margin:auto;
+}
+
+li {
+  display: inline-block;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 20px;
+}
+
+footer {
+  position: fixed; 
+  text-align:center;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(99, 184, 212);
+  color:  rgb(245, 233, 234);
+  animation: 3s linear  slideDown;   
+}
+
+#game, #home, #about {
+  margin-left: 6.25em;
+  margin-right: 6.25em;
 }
