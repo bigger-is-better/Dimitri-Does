@@ -32,7 +32,6 @@ var tile3_sound = new sound('../sounds/simonSound3.mp3')
 var tile4_sound = new sound('../sounds/simonSound4.mp3')
 var fail_sound = new sound('../sounds/sad_trombone.wav')
 
-
 //======================================================================================================================================
 //Functions
 //======================================================================================================================================
@@ -87,14 +86,14 @@ function sound(src) {
 
 //sounds for specific colors on tiles
 
-function play_color_sound(user_input) {
-  if (user_input === 'tile1'){
+function play_color_sound(user_response) {
+  if (user_response === 'tile1'){
     tile1_sound.play();
-  } else if (user_input === 'tile2'){
+  } else if (user_response === 'tile2'){
     tile2_sound.play();
-  } else if (user_input === 'tile3'){
+  } else if (user_response === 'tile3'){
     tile3_sound.play();
-  } else if (user_input === 'tile4'){
+  } else if (user_response === 'tile4'){
     tile4_sound.play();
   }
 }
@@ -103,36 +102,40 @@ function play_color_sound(user_input) {
 
 function handleClick(event){
   if (user_clicking) {
-    //get ID of what was clicked
-    var user_input = event.target.id;
+    //we need to know what was clicked
+    
+    var user_response = event.target.id;
     display_color_when_click(event.target);
 
-    //check if user correctly clicked colors; 
+    //check if the user correctly clicked colors; increment correct clicks from user 
+    
     var tile_to_be_lit = color_sequence[correct_clicks_from_user];
-    if (user_input === tile_dom[tile_to_be_lit].id) {
-      play_color_sound(user_input);
+    if (user_response === tile_dom[tile_to_be_lit].id) {
+      play_color_sound(user_response); //play sound on which color was picked by user
       console.log('correct');
       correct_clicks_from_user++;
       
-      //
+      //give user score if correct clicks matched color sequence; increment color sequence by one
+      //call random color function then push to color_sequence
+      
       if (correct_clicks_from_user >= color_sequence.length) {
         console.log('You got it all right! Good job');
         user_clicking = false;
         correct_clicks_from_user = 0;
         score += 100;
         random_color_to_sequence();
-        setTimeout(show_next_color_sequence, 1000);
+        setTimeout(show_next_color_sequence, 1000); //1 second timer between color change sequence
         parent.textContent = `SCORE: ${score}`;
       }
       console.log(`Score: ${score}`)
     }  
-    //if user picks incorrectly, end game;
+    //user picks wrong color; call function to stop game; gives total score then reset score and user clicks to 0;
     else {
       console.log('Better Luck Next Time!'); 
       parent.textContent = `SCORE: ${score}`;
       parent.textContent = `SCORE: ${score} Try Again? Click Start Game!`
-      end_game();
       parent.style.color = "red"
+      end_game();
     }
   }
 }
@@ -215,6 +218,7 @@ function end_game() {
   store_player_and_score_to_ls();
   score = 0;
   fail_sound.play();
+  fail_sound.volume = 0.2;
   console.log('end_game');
 }
 
