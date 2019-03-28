@@ -3,20 +3,20 @@ h1 {
   font-family: 'Permanent Marker', cursive;
   font-size: 95px;
   margin: auto;
-  color:yellow;
+  color:rgb(245, 233, 234);
   font-weight: bolder;
   transition: background-color 0.5s ease;
-  background-color:purple;
+  background-color:rgb(99, 184, 212);
 }
 h1:hover {
-  background-color: green;
-  color: red;
+  background-color: rgb(245, 233, 234);
+  color: rgb(99, 184, 212);
 }
 p {
   text-align: center;
   font-family: 'Permanent Marker', cursive;
   font-size: 30px;
-  color: green;
+  color: rgb(99, 184, 212);
   font-weight: bolder;
 }
 .background {
@@ -24,7 +24,7 @@ p {
   display: block;
   z-index: -1;
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   background-image: url('../img/test-bg1.jpg');
   background-size: cover;
   opacity: 0.8;
@@ -39,13 +39,15 @@ li {
   font-size: 20px;
 }
 footer {
-  position: fixed; 
+  /* position: absolute;  */
   text-align:center;
+  margin-bottom: 0;
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: red;
-  color: white;
+  height: 100%;
+  background-color: rgb(99, 184, 212);
+  color: rgb(245, 233, 234);
 }
 #home, #leaderboard, #about {
   margin-left: 200px;
@@ -105,4 +107,8 @@ footer {
 #score{
   margin-bottom: 10px;
   margin-top: 10px;
+}
+
+body {
+  margin: 0;
 }

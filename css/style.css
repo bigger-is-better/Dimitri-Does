@@ -6,7 +6,7 @@
 
 @keyframes slideDown {
     0% {
-        transform: translateY(-1000%);
+        transform: translateY(-1500%);
         
 	}
 	50%{
@@ -90,9 +90,7 @@ footer {
     width: 100%;
     background-color: rgb(99, 184, 212);
     color:  rgb(245, 233, 234);
-    animation: 3s linear  slideDown;
-     
-    
+    animation: 3s linear  slideDown;   
 }
 
 input[type=submit] {
@@ -112,4 +110,8 @@ li {
     display: inline-block;
     font-family: 'Permanent Marker', cursive;
     font-size: 20px;
+}
+
+body{
+    margin: 0;
 }
