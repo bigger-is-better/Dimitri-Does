@@ -135,14 +135,14 @@ function handleClick(event){
         score += 100;
         random_color_to_sequence();
         setTimeout(show_next_color_sequence, 1000); //1 second timer between color change sequence
-        parent.textContent = `SCORE: ${score}`;
+        parent.textContent = `${user_name} - SCORE: ${score}`;
       }
       console.log(`Score: ${score}`)
     }  
     //user picks wrong color; call function to stop game; gives total score then reset score and user clicks to 0;
     else {
       console.log('Better Luck Next Time!'); 
-      parent.textContent = `SCORE: ${score} Try Again? Click Start Game!`
+      parent.textContent = `Nice try ${user_name}! SCORE: ${score} Try Again? Start Game!`
       parent.style.color = "red"
       end_game();
     }
@@ -198,7 +198,7 @@ function display_color_when_click(target) {
 function start_game() {
   start_button.disabled = true;
   parent.style.color = "green";
-  parent.textContent = `SCORE: ${score}`
+  parent.textContent = `${user_name} - SCORE: ${score}`
   random_color_to_sequence();
   show_next_color_sequence();
   fail_sound.stop();
@@ -255,7 +255,6 @@ function change_level(event) {
   }
   else if (event.target.id === 'harder') {
     level++;
-    score * 2;
     tile_border.className = level_classes[level];
   }
   if (level < 0) {
