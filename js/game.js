@@ -17,7 +17,7 @@ var tile_dom = [
   document.getElementById('tile4')
 ];
 
-var tile_border = document.getElementById('tiles_blocks_container')
+var tile_border = document.getElementById('tile-blocks-container')
 var start_button = document.getElementById('start-button');
 var parent = document.getElementById("score");
 var correct_clicks_from_user = 0; //where the user is at; increment for every round
@@ -31,6 +31,13 @@ var tile2_sound = new sound('../sounds/simonSound2.mp3')
 var tile3_sound = new sound('../sounds/simonSound3.mp3')
 var tile4_sound = new sound('../sounds/simonSound4.mp3')
 var fail_sound = new sound('../sounds/sad_trombone.wav')
+fail_sound.volume = 0.2;
+var level = -1; //basic mode
+var level_classes = [
+  'shake', //0 hard
+  'spin', //1 harder
+  'grow', //2 hardest
+];
 
 //======================================================================================================================================
 //Functions
@@ -61,13 +68,15 @@ function get_players_and_score_from_ls() {
 //Event Listeners; loop through quadrant ID's==================================================
 function attach_event_listeners() {
   document.getElementById('start-button').addEventListener('click', start_game);
+  document.getElementById('easier').addEventListener('click', change_level);
+  document.getElementById('harder').addEventListener('click', change_level);
 
   for(var i = 0; i < tile_dom.length; i++) {
     tile_dom[i].addEventListener('click', handleClick);
   }
 }
 
-//sound constructor
+//sound constructor; 
 
 function sound(src) {
   this.sound = document.createElement("audio");
@@ -81,6 +90,7 @@ function sound(src) {
   }
   this.stop = function(){
     this.sound.pause();
+    this.sound.load();
   }
 }
 
@@ -132,7 +142,6 @@ function handleClick(event){
     //user picks wrong color; call function to stop game; gives total score then reset score and user clicks to 0;
     else {
       console.log('Better Luck Next Time!'); 
-      parent.textContent = `SCORE: ${score}`;
       parent.textContent = `SCORE: ${score} Try Again? Click Start Game!`
       parent.style.color = "red"
       end_game();
@@ -192,7 +201,10 @@ function start_game() {
   parent.textContent = `SCORE: ${score}`
   random_color_to_sequence();
   show_next_color_sequence();
+  fail_sound.stop();
 }
+
+//show next color in sequence if user picks correctly; user clicks back to 0 if the user picks incorrectly
 
 function show_next_color_sequence() {
   if (correct_clicks_from_user < color_sequence.length) {
@@ -202,7 +214,7 @@ function show_next_color_sequence() {
   }
 
   else {
-    correct_clicks_from_user = 0;
+    correct_clicks_from_user = 0; 
     //entire sequence shown, allow users to click.
     user_clicking = true;
   }
@@ -234,6 +246,27 @@ function store_player_and_score_to_ls() {
   }
 }
 
+//harder levels; go up or down a level; change classes with DOM
+
+function change_level(event) {
+  if (event.target.id === 'easier') {
+    level--;
+    tile_border.className = level_classes[level];
+  }
+  else if (event.target.id === 'harder') {
+    level++;
+    score * 2;
+    tile_border.className = level_classes[level];
+  }
+  if (level < 0) {
+    document.getElementById('easier').disabled = true;
+  } else if (level >= level_classes.length - 1) {
+    document.getElementById('harder').disabled = true;
+  } else {
+    document.getElementById('easier').disabled = false;
+    document.getElementById('harder').disabled = false;
+  }
+}
 
 attach_event_listeners();
 get_player_name();
