@@ -18,6 +18,8 @@ p {
   font-size: 30px;
   color: rgb(99, 184, 212);
   font-weight: bolder;
+  padding-left: 2em;
+  padding-right: 2em;
 }
 .background {
   content: "";
@@ -96,9 +98,11 @@ footer {
 }
 
 #start-button {
-  width: 100px;
+  width: 120px;
   height: 50px;
   margin-bottom: 5px;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 18px;
 }
 
 #start-button_container {
@@ -112,4 +116,58 @@ footer {
 
 body {
   margin: 0;
+}
+
+.shake {
+  animation: shake 1.82s cubic-bezier(.36,26.07,.19,.97) both infinite;  
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+.spin {
+  display: block;
+  animation: spinner-border 4s linear infinite;
+  width: 2rem;
+  height: 2rem;
+  border-width: 0.25em;
+  border-style: solid;
+  border-color: currentcolor transparent currentcolor currentcolor;
+  border-image: initial;
+  border-radius: 50%;
+}
+
+.grow {
+  display: block;
+  animation: spinner-grow 1.5s linear infinite;
+}
+ul {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+#easier {
+  color: green;
+}
+
+#harder {
+  color: red;
 }
