@@ -41,10 +41,6 @@ header {
     animation: 3s infinite alternate slidein;
 }
 
-/* header:hover {
-    background-color: rgb(245, 233, 234);
-    color: rgb(99, 184, 212);
-} */
 
 h1 {
     text-align: center;

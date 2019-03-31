@@ -21,18 +21,5 @@ function page_refresh() {
 }
 page_refresh();
 
-// Code for slide down animation 
-// function slideDown(){
-//     var ft_el = document.getElementById('nav');
-//     var pos = 0;
-//     var id = setTimeout(frame, 2);
-//     function frame() {
-//         if(pos === 350){
-//             clearTimeout(id);
-//         } else {
-//             pos++;
-//             ft_el.style.top = pos + "px";
-//         }
-//     }
-// };
+
 
