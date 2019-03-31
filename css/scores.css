@@ -7,6 +7,7 @@ body{
 table{
 
   margin:auto;
+  background-color: white;
 }
 
 li {
@@ -29,4 +30,13 @@ footer {
 #game, #home, #about {
   margin-left: 6.25em;
   margin-right: 6.25em;
+}
+
+td {
+  color: black;
+}
+
+h1 {
+  color: white;
+  text-shadow: 2px 2px black;
 }
