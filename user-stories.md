@@ -11,6 +11,9 @@ stackoverflow, w3schools.com, freecodecamp.org, www.soundbible.com http://soundb
 * As a user, I would want clear and intuitive instructions on how to play the game.
 * As a user, I would want each quadrant to have a specific color.
 * As a user, I would want to know my score on the leaderboard at the end of game.
+
+### Developer Stories: 
+
 * As a developer, I would like to create 4 separate pages for my users to interact with.
 * As a developer, I would like to create a game that requires memory, that does not finish until a wrong quadrant is picked.
 * As a developer, I would like to create a log in functionality that stores the users name for later use.
