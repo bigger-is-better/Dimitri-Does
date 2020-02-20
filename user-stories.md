@@ -1,7 +1,13 @@
 # Dimitri-Does
 
 ### Resources/reference
-stackoverflow, w3schools.com, freecodecamp.org, www.soundbible.com http://soundbible.com/1830-Sad-Trombone.html, https://stackoverflow.com/questions/5104053/fade-effect-using-javascript-no-jquery, https://www.w3schools.com/graphics/game_sound.asp, https://getbootstrap.com/, Joseph's brother  
+* stackoverflow 
+* w3schools.com
+* freecodecamp.org
+* www.soundbible.com http://soundbible.com/1830-Sad-Trombone.html
+* https://stackoverflow.com/questions/5104053/fade-effect-using-javascript-no-jquery 
+* https://www.w3schools.com/graphics/game_sound.asp, https://getbootstrap.com/ 
+* Joseph's brother  
 
 ### Tools: Ubuntu, Visual Studio Code, Github, Codepen, 
 
