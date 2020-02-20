@@ -4,10 +4,13 @@ var user_name = [];
 
 function save_username() {
     var form_el = document.getElementById('uname');
+    if(!form_el) {
+        user_name.push('John Doe')
+    }
     user_name.push(form_el.value);
     var stringy_array = JSON.stringify(user_name);
     localStorage.setItem('username', stringy_array);
-    alert (`Welcome! Click Play Now to Start.`);
+    location.href = "./html/game.html";
 };
 
 function page_refresh() {
@@ -19,6 +22,7 @@ function page_refresh() {
         }
     }
 }
+
 page_refresh();
 
 

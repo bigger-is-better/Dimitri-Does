@@ -34,7 +34,7 @@ function convert_scores_to_array_then_sort() {
   score_array.sort(function(a,b) {
     return b[1] - a[1];
   })
-  };
+};
 
 function get_players_and_score_from_ls() {
   players_and_score = JSON.parse(localStorage.getItem('players_and_score'));

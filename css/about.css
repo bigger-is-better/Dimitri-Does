@@ -9,6 +9,8 @@ header {
   font-family: 'Permanent Marker', cursive;
   font-size: 95px;
   animation-name: title;
+  text-align: center;
+  text-shadow: 8px 8px white;
 }
 
 h1 {
@@ -45,6 +47,7 @@ img {
   -moz-transition: opacity 1s ease-in-out;
   -o-transition: opacity 1s ease-in-out;
   transition: opacity 1s ease-in-out;
+  border-radius: 20px 20px 20px 20px;
 }
 
 #topimage:hover {
@@ -56,7 +59,11 @@ img {
   overflow: hidden;
   font-family: 'Permanent Marker', cursive;
   font-size: 16px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
+
 div:nth-child(3n+2) {
   margin-left: 300px;
 }
@@ -84,7 +91,7 @@ margin: 0 300px 0 300px
 }
 
 footer {
-  margin-bottom: 0px;
+  position: fixed; 
   text-align:center;
   left: 0;
   bottom: 0;
@@ -102,6 +109,8 @@ li {
   display: inline-block;
   font-family: 'Permanent Marker', cursive;
   font-size: 20px;
+  background-color: rgb(99, 184, 212);
+  border-radius: 15px 15px 15px 15px;
 }
 
 ul {
