@@ -45,6 +45,7 @@ img {
   -moz-transition: opacity 1s ease-in-out;
   -o-transition: opacity 1s ease-in-out;
   transition: opacity 1s ease-in-out;
+  border-radius: 20px 20px 20px 20px;
 }
 
 #topimage:hover {
@@ -57,6 +58,7 @@ img {
   font-family: 'Permanent Marker', cursive;
   font-size: 16px;
 }
+
 div:nth-child(3n+2) {
   margin-left: 300px;
 }
@@ -84,13 +86,14 @@ margin: 0 300px 0 300px
 }
 
 footer {
-  margin-bottom: 0px;
+  position: fixed; 
   text-align:center;
   left: 0;
   bottom: 0;
   width: 100%;
   background-color: rgb(99, 184, 212);
   color:  rgb(245, 233, 234);
+  animation: 3s linear  slideDown; 
 }
 
 #home, #game, #leaderboard {
@@ -102,6 +105,8 @@ li {
   display: inline-block;
   font-family: 'Permanent Marker', cursive;
   font-size: 20px;
+  background-color: rgb(99, 184, 212);
+  border-radius: 5px 5px 5px 5px;
 }
 
 ul {

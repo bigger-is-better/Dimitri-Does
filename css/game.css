@@ -47,7 +47,6 @@ li {
 }
 
 footer {
-  position: fixed; 
   text-align:center;
   margin-bottom: 0;
   left: 0;
@@ -63,9 +62,9 @@ footer {
   margin-right: 200px;
 }
 
-/* * {
+* {
   box-sizing: border-box;
-} */
+}
 
 #tile-blocks-container {
   border: 5px solid black;
