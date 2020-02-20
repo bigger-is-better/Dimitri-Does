@@ -1,11 +1,13 @@
+h1 {
+  text-align: center;
+}
 
 body{
-
   background-image: url('../img/test-bg1.jpg');
   height: 100%;
 }
-table{
 
+table{
   margin:auto;
   background-color: white;
 }
