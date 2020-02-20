@@ -9,6 +9,8 @@ header {
   font-family: 'Permanent Marker', cursive;
   font-size: 95px;
   animation-name: title;
+  text-align: center;
+  text-shadow: 8px 8px white;
 }
 
 h1 {
@@ -57,6 +59,9 @@ img {
   overflow: hidden;
   font-family: 'Permanent Marker', cursive;
   font-size: 16px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 div:nth-child(3n+2) {
@@ -93,7 +98,6 @@ footer {
   width: 100%;
   background-color: rgb(99, 184, 212);
   color:  rgb(245, 233, 234);
-  animation: 3s linear  slideDown; 
 }
 
 #home, #game, #leaderboard {
@@ -106,7 +110,7 @@ li {
   font-family: 'Permanent Marker', cursive;
   font-size: 20px;
   background-color: rgb(99, 184, 212);
-  border-radius: 5px 5px 5px 5px;
+  border-radius: 15px 15px 15px 15px;
 }
 
 ul {

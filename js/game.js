@@ -135,7 +135,7 @@ function handleClick(event){
         score += 100;
         random_color_to_sequence();
         setTimeout(show_next_color_sequence, 1000); //1 second timer between color change sequence
-        parent.textContent = `${user_name} - SCORE: ${score}`;
+        parent.textContent = `PLAYER: ${user_name} SCORE: ${score}`;
       }
       console.log(`Score: ${score}`)
     }  
@@ -198,7 +198,8 @@ function display_color_when_click(target) {
 function start_game() {
   start_button.disabled = true;
   parent.style.color = "green";
-  parent.textContent = `${user_name} - SCORE: ${score}`
+  parent.textContent = `Player: ${user_name}`
+  parent.textContent = `${user_name} SCORE: ${score}`
   random_color_to_sequence();
   show_next_color_sequence();
   fail_sound.stop();
